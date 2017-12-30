@@ -1,6 +1,6 @@
 console.log("register sanity check");
 
-(function cashRegister() {
+function cashRegister() {
 
     let zeroBtn = document.getElementById("zero");
     let doubleZeroBtn = document.getElementById("doubleZero");
@@ -24,10 +24,20 @@ console.log("register sanity check");
     let depositBtn = document.getElementById("deposit");
     let withdrawBtn = document.getElementById("withdraw");
      
-    
+    let numBtns = document.getElementsByClassName("num");
+
+    for (var i = 0; i < numBtns.length; i++){
+        numBtns[i].addEventListener("click", showNum);
+        console.log(numBtns[i]);
+    }
+
+    function showNum() {
+        console.log("hi");
+    }
 
 
 
 
+}
 
-})();
+cashRegister();
