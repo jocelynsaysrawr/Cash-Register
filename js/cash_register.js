@@ -2,10 +2,16 @@ console.log("register sanity check");
 
 function cashRegister() {
 
+    let dollars = 0;
+    let cents = 0;
+
     let zeroBtn = document.getElementById("zero");
     let doubleZeroBtn = document.getElementById("doubleZero");
     let decimalBtn = document.getElementById("cents");
     let oneBtn = document.getElementById("one");
+        oneBtn.value = Number(oneBtn.innerHTML);
+        console.log(oneBtn.value);
+
     let twoBtn = document.getElementById("two");
     let threeBtn = document.getElementById("three");
     let fourBtn = document.getElementById("four");
@@ -23,16 +29,27 @@ function cashRegister() {
     let subtotalBtn = document.getElementById("getBalance");
     let depositBtn = document.getElementById("deposit");
     let withdrawBtn = document.getElementById("withdraw");
+    
+    let getDisplay = document.getElementById("display");
+    let getAmount = document.getElementById("amount");
+
+    let getBtn = document.getElementsByTagName("button");
      
     let numBtns = document.getElementsByClassName("num");
 
     for (var i = 0; i < numBtns.length; i++){
         numBtns[i].addEventListener("click", showNum);
-        console.log(numBtns[i]);
+
     }
 
     function showNum() {
-        console.log("hi");
+        if (dollars === 0){
+            dollars += Number(this.innerHTML) / 100;
+            getAmount.innerHTML = dollars;
+        }else if (dollars !== 0){
+           dollars = (dollars * 10) + (Number(this.innerHTML) / 100);
+            getAmount.innerHTML = dollars.toFixed(2);
+        }   
     }
 
 
