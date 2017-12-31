@@ -1,6 +1,6 @@
 console.log("calc sanity check");
 
-function calculatorModule() {
+(function calculatorModule() {
     var _memory = 0;
     var _total = 0;
  
@@ -113,4 +113,4 @@ function clearMemory() {
      clearMemory: clearMemory
     };
 
- }
+ })();
