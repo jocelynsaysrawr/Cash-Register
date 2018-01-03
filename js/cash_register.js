@@ -2,7 +2,6 @@ console.log("register sanity check");
 
 function cashRegister() {
 
-    let clearBtn = document.getElementById("clear");
     let subtotalBtn = document.getElementById("getBalance");
     let depositBtn = document.getElementById("deposit");
     let withdrawBtn = document.getElementById("withdraw");
@@ -34,7 +33,6 @@ function cashRegister() {
     }
 
     let dollars = 0;
-    let savedDollars = 0;
     let operation = null;
 
     let addBtn = document.getElementById("add");
@@ -124,6 +122,17 @@ function cashRegister() {
                 display.innerHTML = calculator.getTotal().toFixed(2);
             }
         }
+    }
+
+    let clearBtn = document.getElementById("clear");
+    clearBtn.addEventListener("click", clearAll);
+
+    function clearAll() {
+        dollars = 0;
+        operation = null;
+        calculator.load(0);
+        calculator.clearMemory();
+        display.innerHTML = "0.00";
     }
 
 }
