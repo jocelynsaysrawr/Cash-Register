@@ -2,33 +2,17 @@ console.log("register sanity check");
 
 function cashRegister() {
 
-    let totalBtn = document.getElementById("total");
     let clearBtn = document.getElementById("clear");
     let subtotalBtn = document.getElementById("getBalance");
     let depositBtn = document.getElementById("deposit");
     let withdrawBtn = document.getElementById("withdraw");
     
     let display = document.getElementById("amount");
-
-
-   /* function showNum() {
-        if (dollars === 0){
-            dollars += Number(this.innerHTML) / 100;
-            display.innerHTML = dollars;
-        }else if (dollars !== 0){
-           dollars = (dollars * 10) + (Number(this.innerHTML) / 100);
-           dollars = Number(dollars.toFixed(2));
-            display.innerHTML = calculator.load(dollars);
-        }   
-    }
-    */
     let numBtns = document.getElementsByClassName("num");
 
     for (var i = 0; i < numBtns.length; i++){
         numBtns[i].addEventListener("click", showNum);
     }
-
-    let numArray = [];
 
     function showNum() {
         if (display.innerHTML === "0.00"){
@@ -50,6 +34,7 @@ function cashRegister() {
     }
 
     let dollars = 0;
+    let savedDollars = 0;
     let operation = null;
 
     let addBtn = document.getElementById("add");
@@ -60,7 +45,8 @@ function cashRegister() {
         operation = "add";
         console.log(typeof dollars);
         console.log(dollars);
-        calculator.add(dollars);
+        calculator.load(dollars);
+        calculator.saveMemory();
         display.innerHTML = "";
     }
 
@@ -70,8 +56,9 @@ function cashRegister() {
     function subtraction() {
         dollars = Number(parseFloat(display.innerHTML).toFixed(2));
         operation = "subtract";
-        calculator.subtract(dollars);
-        dispaly.innerHTML = "";
+        calculator.load(dollars);
+        calculator.saveMemory();
+        display.innerHTML = "";
     }
 
     let multiplyBtn = document.getElementById("multiply");
@@ -80,7 +67,8 @@ function cashRegister() {
     function multiplication() {
         dollars = Number(parseFloat(display.innerHTML).toFixed(2));
         operation = "multiply";
-        calculator.multiply(dollars);
+        calculator.load(dollars);
+        calculator.saveMemory();
         display.innerHTML = "";
     }
 
@@ -90,8 +78,52 @@ function cashRegister() {
     function division() {
         dollars = Number(parseFloat(display.innerHTML).toFixed(2));
         operation = "divide";
-        calculator.divide(dollars);
+        calculator.load(dollars);
+        calculator.saveMemory();
         display.innerHTML = "";
+    }
+
+    let totalBtn = document.getElementById("total");
+    totalBtn.addEventListener("click", equals);
+
+    function equals() {
+        if (operation === "add"){
+            dollars = Number(parseFloat(display.innerHTML).toFixed(2));
+            calculator.add(dollars);
+            let totalStr = calculator.getTotal().toString();
+            if (!totalStr.includes(".")) {
+                display.innerHTML = totalStr + ".00";
+            }else{
+                display.innerHTML = calculator.getTotal().toFixed(2);
+            }
+        }else if (operation === "subtract") {
+            dollars = Number(parseFloat(display.innerHTML).toFixed(2));
+            calculator.subtract(dollars);
+            let totalStr = calculator.getTotal().toString();
+            if (!totalStr.includes(".")) {
+                display.innerHTML = totalStr = ".00";
+            }else{
+                display.innerHTML = calculator.getTotal().toFixed(2);
+            }
+        }else if (operation === "multiply") {
+            dollars = Number(parseFloat(display.innerHTML).toFixed(2));
+            calculator.multiply(dollars);
+            let totalStr = calculator.getTotal().toString();
+            if (!totalStr.includes(".")) {
+                display.innerHTML = totalStr + ".00";
+            }else{
+                display.innerHTML = calculator.getTotal().toFixed(2);
+            }
+        }else if (operation === "divide") {
+            dollars = Number(parseFloat(display.innerHTML).toFixed(2));
+            calculator.divide(dollars);
+            let totalStr = calculator.getTotal().toString();
+            if (!totalStr.includes(".")) {
+                display.innerHTML = totalStr + ".00";
+            }else{
+                display.innerHTML = calculator.getTotal().toFixed(2);
+            }
+        }
     }
 
 }
