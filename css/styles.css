@@ -1,4 +1,86 @@
+/* {
+    border: 1px solid black;
+}*/
+
 body {
-    background-color: purple;
-    color: grey;
+    background-color: white;
+    
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 600px;
+    padding: 8px;
+    font-family: monospace;
+    font-size: 40px;
+}
+
+#calculator {
+    display: grid;
+    grid-gap: 0px;
+    grid-template-rows: 1fr;
+}
+
+#btnBox {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+    grid-template-rows: 30px 30px 30px 30px 30px;
+    grid-row: 2/4;
+    margin-right: 600px;
+    margin-left: 600px;
+    margin-top: 0px;
+    padding: 8px;
+    background-color: black;
+
+}
+
+#total {
+    grid-column: 1/6;
+}
+
+#displayBox {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 50px;
+    margin-right: 600px;
+    margin-left: 600px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: black;
+    color: black;
+}
+
+#dollarSign {
+    text-align: center;
+    padding-top: 15px;
+    background-color: white;
+    font-size: 20px;
+}
+
+#amount {
+  grid-column: 2/3;
+  text-align: right;
+  padding-top: 15px;
+  padding-right: 8px;
+  font-size: 20px;
+  background-color: white;
+}
+
+button {
+    font-size: 15px;
+    background-color: rgb(189, 187, 187);
+}
+
+button:hover {
+    background-color: #f3e4fa;
+}
+
+#clear {
+    background-color: rgb(236, 88, 88)
+}
+
+#total {
+    background-color: rgb(84, 84, 243);
 }
